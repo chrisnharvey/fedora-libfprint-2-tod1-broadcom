@@ -35,7 +35,7 @@ cp -a var/lib %{buildroot}/var/lib/
 %dir %{_libdir}/libfprint-2/tod-1
 %dir %{_sharedstatedir}/fprint
 %dir %{_sharedstatedir}/fprint/fw
-%{_libdir}/libfprint-2/tod-1/%soname-%{version}.so
+%{_libdir}/libfprint-2/tod-1/%soname.so
 
 %changelog
 * Sun Nov 19 2023 Chris Harvey <chris@chrisnharvey.com> - 0.0.1
