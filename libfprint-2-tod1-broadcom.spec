@@ -24,7 +24,7 @@ cd libfprint-2-tod1-broadcom
 %install
 cd libfprint-2-tod1-broadcom
 install -dm 0755 %{buildroot}%{_udevrulesdir} %{buildroot}%{_libdir}/libfprint-2/tod-1/
-install -m 0644 lib/udev/rules.d/60-%{name}.rules %{buildroot}%{_udevrulesdir}/%{udevrulesname}.rules
+install -m 0644 lib/udev/rules.d/%{udevrulesname}.rules %{buildroot}%{_udevrulesdir}/%{udevrulesname}.rules
 install -m 0755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/%soname.so %{buildroot}%{_libdir}/libfprint-2/tod-1/%soname.so
 cp -a var/lib %{buildroot}/var/lib/
 
