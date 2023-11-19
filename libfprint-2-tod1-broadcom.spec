@@ -1,6 +1,3 @@
-%define soname libfprint-2-tod-1-broadcom
-%define udevrulesname 60-libfprint-2-device-broadcom
-
 Name:           libfprint-2-tod1-broadcom
 Version:        0.0.1
 Release:        2%{?dist}
@@ -11,6 +8,10 @@ URL:            https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-t
 BuildRequires:  git
 BuildRequires:  pkgconfig(udev)
 ExclusiveArch:  x86_64
+Supplements:    modalias(usb:v0A5Cp5842d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0A5Cp5843d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0A5Cp5844d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v0A5Cp5845d*dc*dsc*dp*ic*isc*ip*)
 
 %description
 This is user space driver for Broadcom fingerprint module. Proprietary driver for the fingerprint reader on the various Dell laptops - direct from Dell's Ubuntu repo.
@@ -23,20 +24,20 @@ cd libfprint-2-tod1-broadcom
 
 %install
 cd libfprint-2-tod1-broadcom
-install -dm 0755 %{buildroot}%{_udevrulesdir} %{buildroot}%{_libdir}/libfprint-2/tod-1/
-install -dm 0755 %{buildroot}%{_sharedstatedir} %{buildroot}%{_sharedstatedir}/fprint/fw/
-install -m 0644 lib/udev/rules.d/%{udevrulesname}.rules %{buildroot}%{_udevrulesdir}/%{udevrulesname}.rules
-install -m 0755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/%soname.so %{buildroot}%{_libdir}/libfprint-2/tod-1/%soname.so
-cp -a var/lib %{buildroot}/var/lib/
+install -dm 0755 %{buildroot}%{_udevrulesdir} %{buildroot}%{_libdir}/libfprint-2/tod-1 %{buildroot}%{_sharedstatedir}/fprint/fw/
+install -m 0644 lib/udev/rules.d/60-libfprint-2-device-broadcom.rules %{buildroot}%{_udevrulesdir}/60-libfprint-2-device-broadcom.rules
+install -m 0644 var/lib/fprint/fw/* %{buildroot}%{_sharedstatedir}/fprint/fw/
+install -m 0755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-2-tod-1-broadcom.so %{buildroot}%{_libdir}/libfprint-2/tod-1/libfprint-2-tod-1-broadcom.so
 
 %files
-%{_udevrulesdir}/%{udevrulesname}.rules
+%attr(644, -, -) %license libfprint-2-tod1-broadcom/LICENCE.broadcom
+%{_udevrulesdir}/60-libfprint-2-device-broadcom.rules
 %dir %{_libdir}/libfprint-2
 %dir %{_libdir}/libfprint-2/tod-1
+%{_libdir}/libfprint-2/tod-1/libfprint-2-tod-1-broadcom.so
 %dir %{_sharedstatedir}/fprint
-%dir %{_sharedstatedir}/fprint/fw
+%dir %{_sharedstatedir}/fprint/fw/
 %{_sharedstatedir}/fprint/fw/*
-%{_libdir}/libfprint-2/tod-1/%soname.so
 
 %changelog
 * Sun Nov 19 2023 Chris Harvey <chris@chrisnharvey.com> - 0.0.1
