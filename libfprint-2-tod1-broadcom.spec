@@ -30,7 +30,7 @@ install -m 0755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/%soname.so %{buildroo
 cp -a var/lib %{buildroot}/var/lib/
 
 %files
-%{_udevrulesdir}/60-%{udevrulesname}.rules
+%{_udevrulesdir}/%{udevrulesname}.rules
 %dir %{_libdir}/libfprint-2
 %dir %{_libdir}/libfprint-2/tod-1
 %dir %{_sharedstatedir}/fprint
