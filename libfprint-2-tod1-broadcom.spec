@@ -32,11 +32,7 @@ install -m 0755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-2-tod-1-bro
 %files
 %attr(644, -, -) %license libfprint-2-tod1-broadcom/LICENCE.broadcom
 %{_udevrulesdir}/60-libfprint-2-device-broadcom.rules
-%dir %{_libdir}/libfprint-2
-%dir %{_libdir}/libfprint-2/tod-1
 %{_libdir}/libfprint-2/tod-1/libfprint-2-tod-1-broadcom.so
-%dir %{_sharedstatedir}/fprint
-%dir %{_sharedstatedir}/fprint/fw/
 %{_sharedstatedir}/fprint/fw/*
 
 %changelog
