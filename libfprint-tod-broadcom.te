@@ -1,0 +1,11 @@
+policy_module(libfprint-tod-broadcom, 1.0)
+
+# Declaring the types we are working with
+type fprintd_t;
+type fprintd_var_lib_t;
+
+# Rule to allow fprintd to access files with the fprintd_var_lib_t context
+# This rule now covers both the symbolic link and the target files
+allow fprintd_t fprintd_var_lib_t:lnk_file { read };
+allow fprintd_t fprintd_var_lib_t:dir { search };
+allow fprintd_t fprintd_var_lib_t:file { read };

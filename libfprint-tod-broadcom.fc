@@ -1,0 +1,5 @@
+# Label the directory where the firmware files are actually installed
+/usr/lib64/fprint/fw(/.*)?      --      gen_context(system_u:object_r:fprintd_var_lib_t,s0)
+
+# The symbolic link still needs to be labeled correctly
+/var/lib/fprint/fw              --      gen_context(system_u:object_r:fprintd_var_lib_t,s0)
